@@ -1,0 +1,179 @@
+const environment = {
+    "env": "production",
+    "jarvis": {
+        "root_url": "https://accounts.nvgs.nvidia.com",
+        "x-metrics": "5ZjiARedWmKOoXlrQRFkblcGoDlJGPOT0oHz4C03hOS72FpYLX0LRmdNk8GbhBIJ"
+    },
+    "offDeviceAuthenticationClient": {
+        "clientID": "183560589800374851",
+        "redirect": "https://login.nvgs.nvidia.com/off-device/status"
+    },
+    "oauthPortalClient": {
+        "clientID": "187289777443177027",
+        "redirectV1": "https://login.nvgs.nvidia.com/v1/redemption"
+    },
+    "reporting": {
+        "datadogRumAppId": "76cfc4f9-358d-45a7-9c22-c627078ac9c5",
+        "datadogRumToken": "pub3241a4e4e74034b695b78524f17fd4d3",
+        "excludeFields": [
+            "key",
+            "code",
+            "user_token",
+            "account_token",
+            "user_id",
+            "email",
+            "authorizeEmail",
+            "display_name",
+            "birthdate",
+            "deviceId"
+        ],
+        "pingdomId": "59037be156e3291b57990094",
+        "pingdomJs": "//rum-static.pingdom.net/pa-59037be156e3291b57990094.js",
+        "deviceFingerprintTrackerJs": "https://www.ipqualityscore.com/api/login.nvgs.nvidia.com/Rk100bCUmQJ7dFE0oifEm9mpSpZ8Sa4F0cdWZefGVlFBOsDZvqqb9VlAKbwlvAif2nYEA3JZOaSVmfAlEmB5eokFMzBt7seRgooC21ntF0xYrtZMf1enMwsw4OLDmpkOZ6JGI3lXITxllXRrWg6oW4aohbGkk35Ce8eWKgk3xfaG1eVzPLalb6z3ZcXT32XWZK6BWPW4jdkmP0SV7mhFTX8vXdeMF5aArz9mePwAWn9jqsD18AAKpzj5kVo4Mlgh/learn.js",
+        "deviceFingerprintTrackerImg": "https://www.ipqualityscore.com/api/login.nvgs.nvidia.com/Rk100bCUmQJ7dFE0oifEm9mpSpZ8Sa4F0cdWZefGVlFBOsDZvqqb9VlAKbwlvAif2nYEA3JZOaSVmfAlEmB5eokFMzBt7seRgooC21ntF0xYrtZMf1enMwsw4OLDmpkOZ6JGI3lXITxllXRrWg6oW4aohbGkk35Ce8eWKgk3xfaG1eVzPLalb6z3ZcXT32XWZK6BWPW4jdkmP0SV7mhFTX8vXdeMF5aArz9mePwAWn9jqsD18AAKpzj5kVo4Mlgh/pixel.png"
+    },
+    "UI": {
+        "showThirdPartyProvidersOnCreateAccount": true
+    },
+    "security": {
+        "gRecaptchaSiteKey": "6LfXUZwUAAAAAHji7hGadq2vtHUeBI_l7iZ6ayNt",
+        "googleOneTapClientId": "155210405517-kbt47nvbj2s2gs29k1l4al4qeo8cqp7s.apps.googleusercontent.com",
+        "hCaptchaSiteKey": "3443d8f6-da7a-4326-929f-4d7fc89ab0d1",
+        "passiveHCaptchaSiteKey": "9c0371c8-26b5-4729-abdf-5c0547e6e91b",
+        "hcaptchaScriptURL": "https://hcaptcha.com/1/api.js",
+        "useCredentialForCorsAccessControlRequests": true,
+        "webauthnSupported": true
+    },
+    "autoLoginInterstitialPage": {
+        "enabled": true,
+        "enabledWhenEmailKnownByUser": false
+    },
+    "profilePortalLink": "https://profile.nvgs.nvidia.com/",
+    "language_list": [
+        {
+            "code": "cs-CZ",
+            "name": "Čeština"
+        },
+        {
+            "code": "da-DK",
+            "name": "Dansk"
+        },
+        {
+            "code": "de-DE",
+            "name": "Deutsch"
+        },
+        {
+            "code": "en-GB",
+            "name": "English (UK)"
+        },
+        {
+            "code": "en-US",
+            "name": "English (US)"
+        },
+        {
+            "code": "es-ES",
+            "name": "Español (España)"
+        },
+        {
+            "code": "es-MX",
+            "name": "Español (México)"
+        },
+        {
+            "code": "fr-FR",
+            "name": "Français"
+        },
+        {
+            "code": "it-IT",
+            "name": "Italiano"
+        },
+        {
+            "code": "hu-HU",
+            "name": "Magyar"
+        },
+        {
+            "code": "nl-NL",
+            "name": "Nederlands"
+        },
+        {
+            "code": "nb-NO",
+            "name": "Norsk (Bokmål)"
+        },
+        {
+            "code": "pl-PL",
+            "name": "Polski"
+        },
+        {
+            "code": "pt-BR",
+            "name": "Português (Brasil)"
+        },
+        {
+            "code": "pt-PT",
+            "name": "Português (Portugal)"
+        },
+        {
+            "code": "ro-RO",
+            "name": "Română"
+        },
+        {
+            "code": "sk-SK",
+            "name": "Slovenčina"
+        },
+        {
+            "code": "sl-SI",
+            "name": "Slovenščina"
+        },
+        {
+            "code": "fi-FI",
+            "name": "Suomi"
+        },
+        {
+            "code": "sv-SE",
+            "name": "Svenska"
+        },
+        {
+            "code": "ar-SA",
+            "name": "‏العربية‏"
+        },
+        {
+            "code": "tr-TR",
+            "name": "Türkçe"
+        },
+        {
+            "code": "el-GR",
+            "name": "Ελληνικά"
+        },
+        {
+            "code": "bg-BG",
+            "name": "български"
+        },
+        {
+            "code": "ru-RU",
+            "name": "Русский"
+        },
+        {
+            "code": "uk-UA",
+            "name": "українська"
+        },
+        {
+            "code": "th-TH",
+            "name": "ภาษาไทย"
+        },
+        {
+            "code": "ko-KR",
+            "name": "한국어"
+        },
+        {
+            "code": "ja-JP",
+            "name": "日本語"
+        },
+        {
+            "code": "zh-CN",
+            "name": "简体中文"
+        },
+        {
+            "code": "zh-TW",
+            "name": "繁體中文"
+        }
+    ],
+    "default_language": "en-US"
+};

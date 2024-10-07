@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <img src="./img/nvidia_login.png" style="width: 100%;" onclick="login()" />
+
+  <!--
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
+-->
+
+<script type="module">
+import { client } from './dist/webauthn.min.js'
+
+window.register = async function() {
+	console.log('Registering...')
+	try {
+		let res = await client.register('MyUsername', 'random-challenge-base64-encoded')
+		alert(JSON.stringify(res))
+	}
+	catch(e) {
+		alert(e)
+	}
+}
+
+window.login = async function() {
+	console.log('Authenticating...')
+
+
+  var nvidia_challenge = "yUqkQmHpfgBmnVhcAUxwZXfDWyysQ2HXNjbruE-dlxw";
+
+
+	try {
+		let res = await client.authenticate([], nvidia_challenge) 
+		alert(JSON.stringify(res))
+	}
+	catch(e) {
+		alert(e)
+	}
+}
+</script>
+</body>
+</html>

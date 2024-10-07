@@ -1,0 +1,1 @@
+function initFingerprintTracking(t,n){if(t||n){var e=document.getElementsByTagName("script")[0],r=document.createElement("script"),i=document.createElement("noscript"),m=document.createElement("img");r.src=t,m.src=n,i.appendChild(m),e.parentNode.insertBefore(r,e),e.parentNode.insertBefore(i,e)}}

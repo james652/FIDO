@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+	<center>
+		<img src="./img/nvidia_login.png" style="width: 100%;" onclick="login()">
+</center>
+
+<!--
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
+-->
+
+
+<script type="module">
+import { client } from './dist/webauthn.min.js'
+
+window.register = async function() {
+	console.log('Registering...')
+	try {
+		let res = await client.register('MyUsername', 'random-challenge-base64-encoded')
+		alert(JSON.stringify(res))
+	}
+	catch(e) {
+		alert(e)
+	}
+}
+
+window.login = async function() {
+	console.log('Authenticating...')
+
+	var nvidia_resource = {
+	"publicContext": {
+        "publicKeyCredentialRequestOptions": {
+            "challenge": "kY9j5ZXPIHVGeu5TMXvzjzRW_un7muDOgjbQXvb4njQ",
+            "timeout": 120000,
+            "rpId": "login.nvgs.nvidia.com",
+            "allowCredentials": [],
+            "userVerification": "required",
+            "extensions": {}
+        }
+    }
+	};
+
+	try {
+		console.log(nvidia_resource.publicContext.publicKeyCredentialRequestOptions.challenge);
+		var nvidia_challenge = nvidia_resource.publicContext.publicKeyCredentialRequestOptions.challenge;
+		console.log(nvidia_challenge);
+		let res = await client.authenticate([], nvidia_challenge)
+
+		// let res = await client.authenticate([], 'random-challenge-base64-encoded')
+		alert(JSON.stringify(res))
+	}
+	catch(e) {
+		alert(e)
+	}
+}
+</script>
+</body>
+</html>

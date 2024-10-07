@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/main.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* 모달의 배경을 투명하게 만드는 스타일 */
+      .modal-backdrop {
+        background-color: transparent;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 이미지에 직접 onclick 이벤트 핸들러 추가 -->
+    <div class="container-fluid" onClick="showModal()">
+      <div id="nv-signin" class="col-12">
+        <img
+          src="/static/images/ndivia_signin.png"
+          class="img-fluid"
+          alt="ndivia sign in"
+        />
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="qrSigninModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body" data-bs-dismiss="modal">
+            <div>
+              <img id="signinQrImage" src="static/nvidia_signin_with_qr.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+    <script>
+      async function showModal() {
+        console.log('========================================= 1');
+        // QR 이미지를 모달에 넣어 준다.
+        await fetchQrImage();
+        console.log('========================================= 2');
+
+        console.log('========================================= 3');
+        // 모달을 띄운다.
+        var myModal = new bootstrap.Modal(
+          document.getElementById("qrSigninModal"),
+          {}
+        );
+        console.log('========================================= 4');
+        myModal.show();
+        console.log('========================================= 5');
+      }
+
+      async function fetchQrImage() {
+        console.log('fetchQrImage() ========================================= 1');
+        // 특정 URL 에 접속 해서 결과를 받아온다.
+        await fetch("/", { method: "post" })
+          .then((res) => {
+            console.log('fetchQrImage() ========================================= 2');
+            console.log(res);
+		  document.getElementById("signinQrImage").src = "static/nvidia_signin_with_qr.png?" + Date.now();
+            // document.getElementById("qrSigninModal").innerHTML = "<img src='/static/nvidia_signin_with_qr.png' alt='None'>";
+
+              console.log('fetchQrImage() ========================================= 3');
+		  /*
+            setTimeout(() => {
+              fetch("/second")
+                .then((e) => {
+                    console.log('fetchQrImage() ========================================= 4');
+                  document.getg(e);
+                    console.loElementById("email").innerHTML =
+                    "<img src='static/email.png' alt='None'>";
+                })
+                .catch();
+            }, 20000);
+	    */
+          })
+          .catch((err) => {
+            console.log("Error!");
+          });
+          console.log('fetchQrImage() ========================================= 9');
+      };
+    </script>
+  </body>
+</html>

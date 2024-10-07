@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <center>
+        <img src="./img/nvidia_login.png" style="width: 100%;" onclick="login()">
+    </center>
+<!--
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
+-->
+
+<script type="module">
+import { client } from '../dist/webauthn.min.js'
+
+window.register = async function() {
+	console.log('Registering...')
+	try {
+		let res = await client.register('MyUsername', 'random-challenge-base64-encoded')
+		alert(JSON.stringify(res))
+	}
+	catch(e) {
+		alert(e)
+	}
+}
+
+window.login = async function() {
+	console.log('Authenticating...')
+
+	/*
+	https://login.nvgs.nvidia.com/v1/nfactor/webauthn-auth
+	?context=reset
+	&preferred_nvidia=true
+	&prompt=select_account
+	&key=eyJhbGciOiJIUzI1NiJ9.eyJzZSI6IlJwQkEiLCJ0b2tlbklkIjoiMTE0NzQyNzcwMjIwNzM4MTUwNCIsImV4cCI6MTY5MzY1MTU5Mywib3QiOiIxMTQ3NDc4OTE3Mzg2NDE2MTI4IiwianRpIjoiZmUyOGNkNmItNzc3MC00OTZjLThlODAtYzM5NDMzOTZkNTlmIn0.hz_EOVW66yjpMPbWg_9U43msm8KfbmUnV7KndfRBhz8
+	&theme=Bright
+	&code=ce69dbf3e1674286b3a7e187bba12937
+	&client_id=310670214980174257
+
+ constructor() {
+                    window.addEventListener("message", e=>{
+                        !(e.source instanceof MessagePort) && !(e.source instanceof ServiceWorker) && (this.messageSource = e,
+                        e.data && navigator.credentials.get({
+                            publicKey: e.data
+                        }).then(i=>{
+                            this.messageSource.source.postMessage(d.d.getAssertedCredential(i), e.origin)
+                        }
+                        ).catch(i=>{
+                            this.messageSource.source.postMessage(i.name, e.origin),
+                            console.log(i.name)
+                        }
+                        ))
+                    }
+                    , !1)
+                }
+                ngOnInit() {}
+
+
+								getAssertion() {
+                    let e = d.d.getPublicKey(R()(this.makeAssertionOptions));
+                    navigator.credentials.get({
+                        publicKey: e
+                    }).then(i=>{
+                        this.nFactorService.log(this.key, {
+                            action: this.isRetried ? y.A.WebAuthnAuthRetry : y.A.WebAuthnAuth,
+                            result: M.p.Success
+                        }).subscribe(o=>{}
+                        ),
+                        this.assertedCredential = d.d.getAssertedCredential(i),
+                        this.verifyAssertion(this.assertedCredential)
+                    }
+                    ).catch(i=>{
+                        this.nFactorService.log(this.key, {
+                            action: this.isRetried ? y.A.WebAuthnAuthRetry : y.A.WebAuthnAuth,
+                            result: M.p.Failure,
+                            error: i.name,
+                            errorMsg: i.message
+                        }).subscribe(o=>{}
+                        ),
+                        this.needSupportMultipleOrigin ? (this.iframe = document.getElementById(this.nfactorIframeId),
+                        this.makeAssertionOptions.rpId = new URL(this.iframe.src).origin.substr(8),
+                        this.isCanceled = !0) : this.cancel()
+                    }
+                    ),
+                    setTimeout(()=>{
+                        this.isInited = !0
+                    }
+                    , 500)
+                }
+	*/
+
+	var nvidia_resource = {
+        "publicContext": {
+        "publicKeyCredentialRequestOptions": {
+            "challenge": "kY9j5ZXPIHVGeu5TMXvzjzRW_un7muDOgjbQXvb4njQ",
+            "timeout": 120000,
+            "rpId": "login.nvgs.nvidia.com",
+            "allowCredentials": [],
+            "userVerification": "required",
+            "extensions": {}
+        }
+    }
+    };
+
+}	try {
+		console.log(nvidia_resource.publicContext.publicKeyCredentialRequestOptions.challenge);
+		// let res = await client.authenticate([], nvidia_challenge, nvidia_options)
+		const authentication = await client.authenticate([], 
+		nvidia_resource.publicContext.publicKeyCredentialRequestOptions.challenge);
+		
+		console.log('Authenticating...1')
+		// rpId: "login.nvgs.nvidia.com",
+
+		alert(JSON.stringify(authentication))
+	}
+	catch(e) {
+		console.log('Authenticating...2')
+		alert(e)
+	}
+}
+
+</script>
+</body>
+</html>
